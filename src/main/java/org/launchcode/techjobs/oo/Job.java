@@ -52,23 +52,16 @@ public class Job {
 
     @Override
     public String toString() {
+
         return
             newLine +
             "ID: " + this.id + newLine +
-            "Name: " + this.name + newLine+
-            "Employer: " + this.employer + newLine +
-            "Location: " + this.location + newLine +
-            "Position Type: " + this.positionType + newLine +
-            "Core Competency: " + this.coreCompetency + newLine;
+            "Name: " + (this.name.isEmpty() ? "Data not available": this.name) + newLine+
+            "Employer: " + (this.employer.getValue().isEmpty() ? "Data not available": this.employer) + newLine +
+            "Location: " + (this.location.getValue().isEmpty() ? "Data not available": this.location) + newLine +
+            "Position Type: " + (this.positionType.getValue().isEmpty() ? "Data not available": this.positionType) + newLine +
+            "Core Competency: " + (this.coreCompetency.getValue().isEmpty() ? "Data not available": this.coreCompetency) + newLine;
     }
-
-    //The string should contain a label for each field,
-    // followed by the data stored in that field.
-    // Each field should be on its own line.
-
-    //If a field is empty, the method should add,
-    // Data not available after the label.
-
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.

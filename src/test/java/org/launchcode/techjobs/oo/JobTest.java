@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class JobTest {
 
     //testData
-    @Before
-    public void createTestData(){
-        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-    }
+//    @Before
+//    public void createTestData(){
+//        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//    }
          //TODO: Create your unit tests here
 
     @Test
@@ -70,8 +70,14 @@ public class JobTest {
     public void testToStringStartsAndEndsWithNewLine(){
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        assertTrue(testJob.toString().contains(System.lineSeparator()));
-        //first & last character
+        int length = testJob.toString().length();
+
+        Character stringStart = testJob.toString().charAt(0);
+        Character stringEnd = testJob.toString().charAt(length - 1);
+
+        assertEquals(System.lineSeparator(), String.valueOf(stringStart));
+        assertEquals(System.lineSeparator(), String.valueOf(stringEnd));
+
     }
 
     @Test
@@ -92,11 +98,25 @@ public class JobTest {
         assertEquals(testString, testJob.toString());
     }
 
+
     @Test
     public void testToStringHandlesEmptyField(){
+        Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
 
+        String testLine = System.lineSeparator();
+        String blankError = "Data not available";
+
+        String testString =
+                testLine +
+                "ID: " + 2 + testLine +
+                "Name: " + blankError + testLine +
+                "Employer: " + blankError + testLine +
+                "Location: " + blankError + testLine +
+                "Position Type: " + blankError + testLine +
+                "Core Competency: " + blankError + testLine;
+
+        assertEquals(testString, testJob.toString());
     }
-
 }
 
 //arrange
