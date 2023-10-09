@@ -4,14 +4,16 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private static int id;
     private static int nextId = 1;
 
-    private String name;
-    private Employer employer;
-    private Location location;
-    private PositionType positionType;
-    private CoreCompetency coreCompetency;
+    private static String name;
+    private static Employer employer;
+    private static Location location;
+    private static PositionType positionType;
+    private static CoreCompetency coreCompetency;
+
+    public String newLine = System.lineSeparator();
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields.
@@ -51,12 +53,12 @@ public class Job {
     @Override
     public String toString() {
         return
-        "ID: " + System.lineSeparator() +
-        "Name: " + System.lineSeparator() +
-        "Employer: " + System.lineSeparator() +
-        "Location: " + System.lineSeparator() +
-        "Position Type: " + System.lineSeparator() +
-        "Core Competency: " + System.lineSeparator();
+        "ID: " + Job.id + newLine +
+        "Name: " + Job.name + newLine+
+        "Employer: " + Job.employer + newLine +
+        "Location: " + Job.location + newLine +
+        "Position Type: " + Job.positionType + newLine +
+        "Core Competency: " + Job.coreCompetency + newLine;
     }
 
     //The string should contain a label for each field,
@@ -64,7 +66,7 @@ public class Job {
     // Each field should be on its own line.
 
     //If a field is empty, the method should add,
-    // “Data not available” after the label.
+    // Data not available after the label.
 
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
@@ -79,36 +81,36 @@ public class Job {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Employer getEmployer() {
         return employer;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
     }
 
     public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public PositionType getPositionType() {
         return positionType;
     }
 
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
-    }
-
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
     }
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {

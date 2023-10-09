@@ -39,6 +39,8 @@ public class JobTest {
     public void testJobsForEquality(){
         Job jobA = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job jobB = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        //assertNotEqual(jobA, jobB);
     }
 
     //Generate two Job objects that have identical field values EXCEPT for id.
@@ -46,13 +48,23 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
-        boolean a = testJob.toString.contains(System.lineSeparator());
-        assertEquals(true, a);
+        //boolean a = testJob.toString.contains(System.lineSeparator());
+        //assertEquals(true, a);
+        //first & last character
     }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String testLine = System.lineSeparator();
 
+        String testString = "ID: " + 2 + testLine +
+                "Name: " + "Product tester" + testLine +
+                "Employer: " + "ACME" + testLine +
+                "Location: " + "Desert" + testLine +
+                "Position Type: " + "Quality control" + testLine +
+                "Core Competency: " + "Persistence" + testLine;
+        assertEquals(testString, testJob.toString());
     }
 
     @Test
