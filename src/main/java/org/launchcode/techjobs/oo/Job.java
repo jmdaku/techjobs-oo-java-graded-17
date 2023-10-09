@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Job {
 
-    private static int id;
+    private int id;
     private static int nextId = 1;
 
-    private static String name;
-    private static Employer employer;
-    private static Location location;
-    private static PositionType positionType;
-    private static CoreCompetency coreCompetency;
+    private String name;
+    private Employer employer;
+    private Location location;
+    private PositionType positionType;
+    private CoreCompetency coreCompetency;
 
     public String newLine = System.lineSeparator();
 
@@ -53,12 +53,13 @@ public class Job {
     @Override
     public String toString() {
         return
-        "ID: " + Job.id + newLine +
-        "Name: " + Job.name + newLine+
-        "Employer: " + Job.employer + newLine +
-        "Location: " + Job.location + newLine +
-        "Position Type: " + Job.positionType + newLine +
-        "Core Competency: " + Job.coreCompetency + newLine;
+            newLine +
+            "ID: " + this.id + newLine +
+            "Name: " + this.name + newLine+
+            "Employer: " + this.employer + newLine +
+            "Location: " + this.location + newLine +
+            "Position Type: " + this.positionType + newLine +
+            "Core Competency: " + this.coreCompetency + newLine;
     }
 
     //The string should contain a label for each field,

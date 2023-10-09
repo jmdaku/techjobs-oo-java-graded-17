@@ -3,20 +3,25 @@ package org.launchcode.techjobs.oo;
 import org.junit.Test;
 import org.junit.Before;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class JobTest {
 
     //testData
     @Before
     public void createTestData(){
-    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
-    //TODO: Create your unit tests here
+         //TODO: Create your unit tests here
 
     @Test
     public void testSettingJobId(){
+        Job testJobA = new Job();
+        Job testJobB = new Job();
 
+        assertNotEquals(testJobA.getId(), testJobB.getId());
     }
 
     //Create two Job objects using the empty constructor.
@@ -26,7 +31,22 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields(){
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
+        assertTrue(testJob.getEmployer() instanceof Employer);
+        assertEquals("ACME", testJob.getEmployer().getValue());
+
+        assertTrue(testJob.getLocation() instanceof Location);
+        assertEquals("Desert", testJob.getLocation().getValue());
+
+        assertTrue(testJob.getPositionType() instanceof PositionType);
+        assertEquals("Quality control", testJob.getPositionType().getValue());
+
+        assertTrue(testJob.getCoreCompetency() instanceof CoreCompetency);
+        assertEquals("Persistence", testJob.getCoreCompetency().getValue());
+
+        assertTrue(testJob.getName() instanceof String);
+        assertEquals("Product tester", testJob.getName());
     }
 
     //Use assertTrue and assertEquals statements to test
@@ -40,7 +60,7 @@ public class JobTest {
         Job jobA = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job jobB = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        //assertNotEqual(jobA, jobB);
+        assertNotEquals(jobA, jobB);
     }
 
     //Generate two Job objects that have identical field values EXCEPT for id.
@@ -48,22 +68,27 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
-        //boolean a = testJob.toString.contains(System.lineSeparator());
-        //assertEquals(true, a);
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertTrue(testJob.toString().contains(System.lineSeparator()));
         //first & last character
     }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         String testLine = System.lineSeparator();
 
-        String testString = "ID: " + 2 + testLine +
+        String testString =
+                testLine +
+                "ID: " + 2 + testLine +
                 "Name: " + "Product tester" + testLine +
                 "Employer: " + "ACME" + testLine +
                 "Location: " + "Desert" + testLine +
                 "Position Type: " + "Quality control" + testLine +
                 "Core Competency: " + "Persistence" + testLine;
+
         assertEquals(testString, testJob.toString());
     }
 
